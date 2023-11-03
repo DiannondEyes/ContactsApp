@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Контакты</string>
+    <string name="p_number">Номер телефона</string>
+    <string name="name2">Фамилия</string>
+    <string name="name1">Имя</string>
+    <string name="add_contact">Добавить контакт</string>
+    <string name="mail">Почта</string>
+    <string name="save">Сохранить</string>
+    <string name="address">Адрес</string>
+    <string name="avatar">Аватар</string>
+</resources>

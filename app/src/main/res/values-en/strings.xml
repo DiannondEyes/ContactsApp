@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="p_number">Phone number</string>
+    <string name="name2">Last name</string>
+    <string name="name1">First name</string>
+    <string name="add_contact">New contact</string>
+    <string name="mail">Mail</string>
+    <string name="save">Save</string>
+    <string name="address">Address</string>
+    <string name="avatar">Avatar</string>
+</resources>
