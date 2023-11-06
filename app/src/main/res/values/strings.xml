@@ -9,4 +9,6 @@
     <string name="address">Адрес</string>
     <string name="avatar">Аватар</string>
     <string name="edit">Редактировать</string>
+    <string name="call">Звонок</string>
+    <string name="message">Сообщение</string>
 </resources>

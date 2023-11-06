@@ -8,76 +8,101 @@
     android:padding="16dp"
     tools:context=".EditActivity">
 
-    <EditText
-        android:id="@+id/address"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="368dp"
-        android:autofillHints="postalAddress"
-        android:hint="@string/address"
-        android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/surname"
-        android:layout_width="185dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="208dp"
-        android:autofillHints="username"
-        android:hint="@string/name2"
-        android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/avatar"
+            android:src="@drawable/user" />
 
-    <EditText
-        android:id="@+id/p_number"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="265dp"
-        android:autofillHints="phone"
-        android:hint="@string/p_number"
-        android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextFields" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_background">
 
-    <EditText
-        android:id="@+id/mail"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="316dp"
-        android:autofillHints="emailAddress"
-        android:hint="@string/mail"
-        android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="185dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="208dp"
-        android:autofillHints="username"
-        android:hint="@string/name1"
-        android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:autofillHints="username"
+                android:hint="@string/name1"
+                android:fontFamily="@font/ubuntu"
+                android:textSize="20sp"
+                android:inputType="text"
+                android:textColor="#21005d"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/surname"
+                android:layout_width="185dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:autofillHints="username"
+                android:fontFamily="@font/ubuntu"
+                android:textSize="20sp"
+                android:hint="@string/name2"
+                android:inputType="text"
+                android:textColor="#21005d"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/ubuntu"
+            android:textSize="20sp"
+            android:autofillHints="postalAddress"
+            android:hint="@string/address"
+            android:inputType="text"
+            android:textColor="#21005d"
+            android:maxLines="1"/>
+
+        <EditText
+            android:id="@+id/p_number"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/ubuntu"
+            android:textSize="20sp"
+            android:autofillHints="phone"
+            android:hint="@string/p_number"
+            android:textColor="#21005d"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/mail"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:autofillHints="emailAddress"
+            android:hint="@string/mail"
+            android:inputType="text"
+            android:textColor="#21005d"
+            android:maxLines="1"
+            android:fontFamily="@font/ubuntu"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
@@ -88,17 +113,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="@string/save" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@string/avatar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

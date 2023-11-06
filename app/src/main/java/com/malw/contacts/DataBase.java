@@ -20,6 +20,7 @@ public class DataBase {
     public String[] getContact(int id){
         Cursor query = baseContacts.rawQuery("SELECT " + id + " FROM contacts;", null);
         // TODO: return new String[]{query.getString(0), query.}
+        return new String[0];
     }
 
 
