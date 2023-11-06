@@ -7,5 +7,9 @@
     </style>
     <color name="back">#4a3a87</color>
     <color name="text">#e7d7fe</color>
-
+    <drawable name="userI">@drawable/user_night</drawable>
+    <drawable name="callI">@drawable/call_night</drawable>
+    <drawable name="messageI">@drawable/message_night</drawable>
+    <drawable name="emailI">@drawable/email_night</drawable>
+    <drawable name="homeI">@drawable/home_night</drawable>
 </resources>

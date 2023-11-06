@@ -9,5 +9,9 @@
 
     <color name="back">#eaddff</color>
     <color name="text">#21005d</color>
-
+    <drawable name="userI">@drawable/user</drawable>
+    <drawable name="callI">@drawable/call</drawable>
+    <drawable name="messageI">@drawable/message</drawable>
+    <drawable name="emailI">@drawable/email</drawable>
+    <drawable name="homeI">@drawable/home</drawable>
 </resources>

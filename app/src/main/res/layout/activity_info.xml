@@ -28,7 +28,7 @@
             android:layout_height="350dp"
             android:layout_gravity="center"
             android:contentDescription="@string/avatar"
-            android:src="@drawable/user" />
+            android:src="@drawable/userI" />
 
         <TextView
             android:id="@+id/name_surname"
@@ -69,7 +69,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginHorizontal="20dp"
                     android:background="#00000000"
-                    android:src="@drawable/call" />
+                    android:src="@drawable/callI" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_gravity="center_horizontal"
                 android:background="#00000000"
-                android:src="@drawable/message"
+                android:src="@drawable/messageI"
                 />
 
                 <TextView
@@ -131,9 +131,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/call" />
+                android:src="@drawable/callI" />
 
             <TextView
                 android:id="@+id/phone_number"
@@ -167,7 +166,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/email" />
+                android:src="@drawable/emailI" />
 
             <TextView
                 android:id="@+id/email"
@@ -202,7 +201,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/home" />
+                android:src="@drawable/homeI" />
 
             <TextView
                 android:id="@+id/address"
@@ -234,6 +233,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="NotSibling" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
