@@ -33,9 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
-            android:text="Олег Васильев"
-            android:textColor="#21005d"
             android:fontFamily="@font/ubuntu_bold"
+            android:text="Олег Васильев"
+            android:textColor="@color/text"
             android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,10 +71,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/call"
-                    android:textColor="#21005d"
+                    android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/ubuntu"
-                    android:layout_gravity="center_horizontal"/>
+                    android:text="@string/call"
+                    android:textColor="@color/text" />
             </LinearLayout>
 
             <LinearLayout
@@ -91,13 +91,13 @@
                 android:src="@drawable/message"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/message"
-                android:textColor="#21005d"
-                android:fontFamily="@font/ubuntu"
-                android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="@string/message"
+                    android:textColor="@color/text" />
 
             </LinearLayout>
 
@@ -128,7 +128,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="10dp"
+
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/call" />
 
@@ -138,9 +138,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:textColor="#21005d"
                 android:fontFamily="@font/ubuntu"
                 android:text=""
+                android:textColor="@color/text"
                 android:textSize="20sp"
                 tools:ignore="HardcodedText" />
 
@@ -173,8 +173,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/ubuntu"
-                android:textColor="#21005d"
                 android:text=""
+                android:textColor="@color/text"
                 android:textSize="20sp"
                 tools:ignore="HardcodedText" />
 
@@ -207,9 +207,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:textColor="#21005d"
                 android:fontFamily="@font/ubuntu"
                 android:text=""
+                android:textColor="@color/text"
                 android:textSize="20sp"
                 tools:ignore="HardcodedText" />
         </LinearLayout>

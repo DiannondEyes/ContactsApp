@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Contacts" parent="Base.Theme.Contacts" />
+
+    <color name="back">#eaddff</color>
+    <color name="text">#21005d</color>
+
 </resources>

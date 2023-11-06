@@ -3,5 +3,9 @@
     <style name="Base.Theme.Contacts" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
     </style>
+    <color name="back">#4a3a87</color>
+    <color name="text">#e7d7fe</color>
+
 </resources>
