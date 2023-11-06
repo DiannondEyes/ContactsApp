@@ -2,13 +2,15 @@ package com.malw.contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
-    private static DataBase db;
+    static DataBase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void edit(View view) {
-
+        startActivity(new Intent(MainActivity.this, EditActivity.class));
     }
     void refresh() {
         ListView list = findViewById(R.id.listOfTitles);
-        String[] titles = new String[]{};
-        list.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, titles));
+        HashMap<Integer, String> data = db.getAllContacts();
+        list.setAdapter(new ContactsAdapter(this, data));
     }
 }
