@@ -23,5 +23,6 @@ public class EditActivity extends AppCompatActivity {
                 ((TextView)findViewById(R.id.mail)).getText().toString(),
                 ((TextView)findViewById(R.id.address)).getText().toString()
         );
+        finish();
     }
 }

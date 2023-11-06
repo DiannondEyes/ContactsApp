@@ -16,7 +16,7 @@ public class DataBase {
     }
 
     public void addContact(String name, String surname, String phone, String email, String address){
-        baseContacts.execSQL("INSERT INTO contacts (name, surname, phone, email, address, photo) VALUES (?, ?, ?, ?, ?)", new String[]{name, surname, phone, email, address});
+        baseContacts.execSQL("INSERT INTO contacts (name, surname, phone, email, address) VALUES (?, ?, ?, ?, ?)", new String[]{name, surname, phone, email, address});
     }
 
 //    public String[] getContact(int id){
