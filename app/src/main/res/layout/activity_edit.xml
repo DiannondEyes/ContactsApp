@@ -8,6 +8,9 @@
     android:padding="16dp"
     tools:context=".EditActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -106,6 +109,7 @@
 
     </LinearLayout>
     </LinearLayout>
+</ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
