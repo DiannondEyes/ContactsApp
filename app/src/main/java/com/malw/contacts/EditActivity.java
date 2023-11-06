@@ -17,11 +17,11 @@ public class EditActivity extends AppCompatActivity {
 
     public void edit(View view) {
         MainActivity.db.addContact(
-                ((TextView)findViewById(R.id.name)).getText().toString(),
-                ((TextView)findViewById(R.id.surname)).getText().toString(),
-                ((TextView)findViewById(R.id.p_number)).getText().toString(),
-                ((TextView)findViewById(R.id.mail)).getText().toString(),
-                ((TextView)findViewById(R.id.address)).getText().toString()
+            ((TextView)findViewById(R.id.name)).getText().toString(),
+            ((TextView)findViewById(R.id.surname)).getText().toString(),
+            ((TextView)findViewById(R.id.p_number)).getText().toString(),
+            ((TextView)findViewById(R.id.mail)).getText().toString(),
+            ((TextView)findViewById(R.id.address)).getText().toString()
         );
         finish();
     }
