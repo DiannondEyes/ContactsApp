@@ -1,6 +1,7 @@
 package com.malw.contacts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -44,6 +45,15 @@ public class ContactsAdapter extends BaseAdapter {
         TextView textView = convertView.findViewById(R.id.name);
         textView.setText(data.get(key));
         ((ImageView) convertView.findViewById(R.id.avatar)).setImageURI(Uri.fromFile(new File(context.getFilesDir(), key +".png")));
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer selectedItemKey = (Integer) v.getTag();
+                Intent intent = new Intent(context, InfoActivity.class);
+                intent.putExtra("selectedItemKey", selectedItemKey);
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
 }

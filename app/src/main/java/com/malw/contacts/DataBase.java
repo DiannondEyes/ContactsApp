@@ -19,6 +19,11 @@ public class DataBase {
         baseContacts.execSQL("INSERT INTO contacts (name, surname, phone, email, address) VALUES (?, ?, ?, ?, ?)", new String[]{name, surname, phone, email, address});
     }
 
+    public String[] getContactInfo(int id){
+        Cursor query = baseContacts.rawQuery("SELECT name, surname, phone, email, address FROM contacts WHERE id=?", new String[]{String.valueOf(id)});
+        return new String[]{query.getString(0), query.getString(1), query.getString(2), query.getString(3), query.getString(4)};
+    }
+
 //    public String[] getContact(int id){
 //        Cursor query = baseContacts.rawQuery("SELECT " + id + " FROM contacts;", null);
 //        return new String[]{query.getString(0), query.}
