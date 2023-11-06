@@ -11,7 +11,7 @@
     <EditText
         android:id="@+id/address"
         android:layout_width="380dp"
-        android:layout_height="39dp"
+        android:layout_height="50dp"
         android:layout_marginTop="368dp"
         android:autofillHints="postalAddress"
         android:hint="@string/address"
@@ -25,7 +25,7 @@
     <EditText
         android:id="@+id/surname"
         android:layout_width="185dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="208dp"
         android:autofillHints="username"
         android:hint="@string/name2"
@@ -39,8 +39,8 @@
     <EditText
         android:id="@+id/p_number"
         android:layout_width="380dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="264dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="265dp"
         android:autofillHints="phone"
         android:hint="@string/p_number"
         android:inputType="text"
@@ -54,7 +54,7 @@
     <EditText
         android:id="@+id/mail"
         android:layout_width="380dp"
-        android:layout_height="39dp"
+        android:layout_height="50dp"
         android:layout_marginTop="316dp"
         android:autofillHints="emailAddress"
         android:hint="@string/mail"
@@ -68,7 +68,7 @@
     <EditText
         android:id="@+id/name"
         android:layout_width="185dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="208dp"
         android:autofillHints="username"
         android:hint="@string/name1"
