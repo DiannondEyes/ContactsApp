@@ -19,9 +19,22 @@ public class DataBase {
         baseContacts.execSQL("INSERT INTO contacts (name, surname, phone, email, address) VALUES (?, ?, ?, ?, ?)", new String[]{name, surname, phone, email, address});
     }
 
-    public String[] getContactInfo(int id){
-        Cursor query = baseContacts.rawQuery("SELECT name, surname, phone, email, address FROM contacts WHERE id=?", new String[]{String.valueOf(id)});
-        return new String[]{query.getString(0), query.getString(1), query.getString(2), query.getString(3), query.getString(4)};
+    public void updateContact(int id, String name, String surname, String phone, String email, String address){
+        baseContacts.execSQL("UPDATE contacts SET name = ?, surname = ? ,phone = ?, email = ?, address = ? WHERE id = " + id, new String[]{name, surname, phone, email, address});
+    }
+
+    public HashMap<String, String> getContactInfo(int id){
+        HashMap<String, String> info = new HashMap<>();
+        try (Cursor cursor = baseContacts.rawQuery("SELECT name, surname, phone, email, address  FROM contacts WHERE id=" + id, null)) {
+            if (cursor.moveToFirst()) {
+                info.put("name", cursor.getString(0));
+                info.put("surname", cursor.getString(1));
+                info.put("phone", cursor.getString(2));
+                info.put("email", cursor.getString(3));
+                info.put("address", cursor.getString(4));
+            }
+        }
+        return info;
     }
 
 //    public String[] getContact(int id){

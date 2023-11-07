@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         refresh();
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();

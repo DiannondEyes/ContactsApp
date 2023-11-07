@@ -5,20 +5,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import java.util.HashMap;
 
 public class InfoActivity extends AppCompatActivity {
 
+    HashMap<String, String> info;
+    int selectedItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        int selectedItem = getIntent().getIntExtra("selectedItemKey", -1);
-        String[] info =
-
+        selectedItem = getIntent().getIntExtra("selectedItemKey", 0);
+        refresh();
     }
 
     public void edit(View view) {
-        startActivity(new Intent(InfoActivity.this, EditActivity.class));
+        Intent intent = new Intent(this, EditActivity.class);
+        intent.putExtra("selectedItem", selectedItem);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refresh();
+    }
+
+    void refresh() {
+        info = MainActivity.db.getContactInfo(selectedItem);
+
+        ((TextView)findViewById(R.id.name_surname)).setText(String.format("%s %s", info.get("name"), info.get("surname")));
+        ((TextView)findViewById(R.id.phone_number)).setText(info.get("phone"));
+        ((TextView)findViewById(R.id.email)).setText(info.get("email"));
+        ((TextView)findViewById(R.id.address)).setText(info.get("address"));
     }
 }

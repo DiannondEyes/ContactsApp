@@ -68,19 +68,6 @@
         </LinearLayout>
 
             <EditText
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:autofillHints="postalAddress"
-                android:fontFamily="@font/ubuntu"
-                android:hint="@string/address"
-                android:inputType="text"
-                android:maxLines="1"
-                android:textColor="@color/text"
-                android:textSize="20sp" />
-
-            <EditText
                 android:id="@+id/p_number"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -91,17 +78,31 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@color/text"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="TextFields" />
 
             <EditText
                 android:id="@+id/mail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="20dp"
                 android:autofillHints="emailAddress"
                 android:fontFamily="@font/ubuntu"
                 android:hint="@string/mail"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/text"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:autofillHints="postalAddress"
+                android:fontFamily="@font/ubuntu"
+                android:hint="@string/address"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@color/text"
