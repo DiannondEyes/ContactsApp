@@ -20,7 +20,7 @@ public class DataBase {
     }
 
     public void updateContact(int id, String name, String surname, String phone, String email, String address){
-        baseContacts.execSQL("UPDATE contacts SET name = ?, surname = ? ,phone = ?, email = ?, address = ? WHERE id = " + id, new String[]{name, surname, phone, email, address});
+        baseContacts.execSQL("UPDATE contacts SET name = ?, surname = ? ,phone = ?, email = ?, address = ? WHERE id = ?", new String[]{name, surname, phone, email, address, String.valueOf(id)});
     }
 
     public HashMap<String, String> getContactInfo(int id){
@@ -37,16 +37,11 @@ public class DataBase {
         return info;
     }
 
-//    public String[] getContact(int id){
-//        Cursor query = baseContacts.rawQuery("SELECT " + id + " FROM contacts;", null);
-//        return new String[]{query.getString(0), query.}
-//    }
-
     public HashMap<Integer, String> getAllContacts() {
         HashMap<Integer, String> contacts = new HashMap<>();
         try (Cursor cursor = baseContacts.rawQuery("SELECT id, name, surname FROM contacts", null)) {
             if (cursor.moveToFirst()) {
-                do contacts.put(cursor.getInt(0), cursor.getString(1) + cursor.getString(2));
+                do contacts.put(cursor.getInt(0), cursor.getString(1)+" "+cursor.getString(2));
                 while (cursor.moveToNext());
             }
         }

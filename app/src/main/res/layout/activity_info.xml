@@ -10,6 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
             android:layout_height="350dp"
             android:layout_gravity="center"
             android:contentDescription="@string/avatar"
-            android:src="@drawable/userI" />
+            android:src="@drawable/user" />
 
         <TextView
             android:id="@+id/name_surname"
@@ -48,7 +49,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#21005d"
+            android:background="@color/text"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"/>
 
@@ -69,7 +70,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginHorizontal="20dp"
                     android:background="#00000000"
-                    android:src="@drawable/callI" />
+                    android:src="@drawable/call" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,7 +92,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_gravity="center_horizontal"
                 android:background="#00000000"
-                android:src="@drawable/messageI"
+                android:src="@drawable/message"
                 />
 
                 <TextView
@@ -115,7 +116,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
-                    android:src="@drawable/emailI"
+                    android:src="@drawable/email"
                     />
 
                 <TextView
@@ -135,7 +136,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
-            android:background="#21005d" />
+            android:background="@color/text" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -156,7 +157,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/callI" />
+                android:src="@drawable/call" />
 
             <TextView
                 android:id="@+id/phone_number"
@@ -175,7 +176,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#21005d"
+            android:background="@color/text"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
 
@@ -190,7 +191,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/emailI" />
+                android:src="@drawable/email" />
 
             <TextView
                 android:id="@+id/email"
@@ -209,14 +210,15 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#21005d"
+            android:background="@color/text"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
+            android:minHeight="60dp"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
 
@@ -225,13 +227,14 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/homeI" />
+                android:src="@drawable/home" />
 
             <TextView
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/ubuntu"
                 android:text=""
@@ -240,6 +243,10 @@
                 tools:ignore="HardcodedText" />
         </LinearLayout>
     </LinearLayout>
+        <View
+              android:layout_width="match_parent"
+              android:layout_height="80dp"
+              android:background="#00000000"/>
     </LinearLayout>
 
     </ScrollView>

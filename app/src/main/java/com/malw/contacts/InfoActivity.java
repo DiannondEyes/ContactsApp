@@ -17,15 +17,12 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-
-        selectedItem = getIntent().getIntExtra("selectedItemKey", 0);
+        selectedItem = getIntent().getIntExtra("key", 0);
         refresh();
     }
 
     public void edit(View view) {
-        Intent intent = new Intent(this, EditActivity.class);
-        intent.putExtra("selectedItem", selectedItem);
-        startActivity(intent);
+        startActivity(new Intent(this, EditActivity.class).putExtra("selectedItem", selectedItem));
     }
 
     @Override
@@ -36,7 +33,6 @@ public class InfoActivity extends AppCompatActivity {
 
     void refresh() {
         info = MainActivity.db.getContactInfo(selectedItem);
-
         ((TextView)findViewById(R.id.name_surname)).setText(String.format("%s %s", info.get("name"), info.get("surname")));
         ((TextView)findViewById(R.id.phone_number)).setText(info.get("phone"));
         ((TextView)findViewById(R.id.email)).setText(info.get("email"));

@@ -10,6 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
+
 import java.io.File;
 import java.util.HashMap;
 
@@ -44,15 +46,15 @@ public class ContactsAdapter extends BaseAdapter {
         convertView.setTag(key);
         TextView textView = convertView.findViewById(R.id.name);
         textView.setText(data.get(key));
-        ((ImageView) convertView.findViewById(R.id.avatar)).setImageURI(Uri.fromFile(new File(context.getFilesDir(), key +".png")));
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Integer selectedItemKey = (Integer) v.getTag();
-                Intent intent = new Intent(context, InfoActivity.class);
-                intent.putExtra("selectedItemKey", selectedItemKey);
-                context.startActivity(intent);
-            }
+        File avatar = new File(context.getFilesDir(), key+".png");
+        ImageView avatarImage = convertView.findViewById(R.id.avatar);
+        if (avatar.exists()) {
+            avatarImage.setImageURI(Uri.fromFile(avatar));
+        } else {
+            avatarImage.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(), R.drawable.user, null));
+        }
+        convertView.setOnClickListener(v -> {
+            context.startActivity(new Intent(context, InfoActivity.class).putExtra("key", (Integer) v.getTag()));
         });
         return convertView;
     }

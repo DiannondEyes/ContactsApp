@@ -20,11 +20,12 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="156dp"
+            android:layout_height="151dp"
             android:layout_gravity="center"
             android:contentDescription="@string/avatar"
-            android:src="@drawable/userI" />
+            android:onClick="selectPhoto"
+            android:src="@drawable/user" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +48,7 @@
                 android:autofillHints="username"
                 android:fontFamily="@font/ubuntu"
                 android:hint="@string/name1"
-                android:inputType="text"
+                android:inputType="textCapWords"
                 android:maxLines="1"
                 android:textColor="@color/text"
                 android:textSize="20sp" />
@@ -61,7 +62,7 @@
                 android:autofillHints="username"
                 android:fontFamily="@font/ubuntu"
                 android:hint="@string/name2"
-                android:inputType="text"
+                android:inputType="textCapWords"
                 android:maxLines="1"
                 android:textColor="@color/text"
                 android:textSize="20sp" />
@@ -75,7 +76,7 @@
                 android:autofillHints="phone"
                 android:fontFamily="@font/ubuntu"
                 android:hint="@string/p_number"
-                android:inputType="text"
+                android:inputType="phone"
                 android:maxLines="1"
                 android:textColor="@color/text"
                 android:textSize="20sp"
@@ -89,8 +90,8 @@
                 android:autofillHints="emailAddress"
                 android:fontFamily="@font/ubuntu"
                 android:hint="@string/mail"
-                android:inputType="text"
                 android:maxLines="1"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/text"
                 android:textSize="20sp" />
 
@@ -103,7 +104,7 @@
                 android:autofillHints="postalAddress"
                 android:fontFamily="@font/ubuntu"
                 android:hint="@string/address"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:maxLines="1"
                 android:textColor="@color/text"
                 android:textSize="20sp" />

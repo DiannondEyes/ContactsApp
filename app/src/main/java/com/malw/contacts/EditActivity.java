@@ -16,12 +16,9 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
         setTitle("Редактирование контакта");
-
         selectedItem = getIntent().getIntExtra("selectedItem", -1);
-
         if(selectedItem != -1) {
             HashMap<String, String> info = MainActivity.db.getContactInfo(selectedItem);
-
             ((TextView) findViewById(R.id.name)).setText(info.get("name"));
             ((TextView) findViewById(R.id.surname)).setText(info.get("surname"));
             ((TextView) findViewById(R.id.p_number)).setText(info.get("phone"));
@@ -33,23 +30,27 @@ public class EditActivity extends AppCompatActivity {
     public void edit(View view) {
         if(selectedItem == -1){
             MainActivity.db.addContact(
-                    ((TextView)findViewById(R.id.name)).getText().toString(),
-                    ((TextView)findViewById(R.id.surname)).getText().toString(),
-                    ((TextView)findViewById(R.id.p_number)).getText().toString(),
-                    ((TextView)findViewById(R.id.mail)).getText().toString(),
-                    ((TextView)findViewById(R.id.address)).getText().toString()
+                ((TextView)findViewById(R.id.name)).getText().toString(),
+                ((TextView)findViewById(R.id.surname)).getText().toString(),
+                ((TextView)findViewById(R.id.p_number)).getText().toString(),
+                ((TextView)findViewById(R.id.mail)).getText().toString(),
+                ((TextView)findViewById(R.id.address)).getText().toString()
             );
         }
         else{
             MainActivity.db.updateContact(
-                    selectedItem,
-                    ((TextView)findViewById(R.id.name)).getText().toString(),
-                    ((TextView)findViewById(R.id.surname)).getText().toString(),
-                    ((TextView)findViewById(R.id.p_number)).getText().toString(),
-                    ((TextView)findViewById(R.id.mail)).getText().toString(),
-                    ((TextView)findViewById(R.id.address)).getText().toString()
+                selectedItem,
+                ((TextView)findViewById(R.id.name)).getText().toString(),
+                ((TextView)findViewById(R.id.surname)).getText().toString(),
+                ((TextView)findViewById(R.id.p_number)).getText().toString(),
+                ((TextView)findViewById(R.id.mail)).getText().toString(),
+                ((TextView)findViewById(R.id.address)).getText().toString()
             );
         }
         finish();
+    }
+
+    public void selectPhoto(View view) {
+
     }
 }
