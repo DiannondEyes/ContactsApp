@@ -53,9 +53,7 @@ public class ContactsAdapter extends BaseAdapter {
         } else {
             avatarImage.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(), R.drawable.user, null));
         }
-        convertView.setOnClickListener(v -> {
-            context.startActivity(new Intent(context, InfoActivity.class).putExtra("key", (Integer) v.getTag()));
-        });
+        convertView.setOnClickListener(v -> context.startActivity(new Intent(context, InfoActivity.class).putExtra("key", (Integer) v.getTag())));
         return convertView;
     }
 }
