@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/avatar"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:layout_gravity="center"
@@ -72,7 +72,8 @@
                     android:layout_marginHorizontal="20dp"
                     android:background="#00000000"
                     android:src="@drawable/call"
-                    android:clickable="false"/>
+                    android:clickable="false"
+                    android:contentDescription="@string/call" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -98,7 +99,7 @@
                 android:background="#00000000"
                 android:src="@drawable/message"
                 android:clickable="false"
-                />
+                android:contentDescription="@string/sms" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -125,14 +126,14 @@
                     android:background="#00000000"
                     android:src="@drawable/email"
                     android:clickable="false"
-                    />
+                    android:contentDescription="@string/mail" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/ubuntu"
-                    android:text="@string/email"
+                    android:text="@string/mail"
                     android:textColor="@color/text"
                     android:clickable="false"/>
 
@@ -165,15 +166,16 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/call" />
+                android:layout_marginStart="10dp"
+                android:src="@drawable/call"
+                android:contentDescription="@string/call" />
 
             <TextView
                 android:id="@+id/phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/ubuntu"
                 android:text=""
                 android:textColor="@color/text"
@@ -192,22 +194,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/email" />
+                android:layout_marginStart="10dp"
+                android:src="@drawable/email"
+                android:contentDescription="@string/mail"/>
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/ubuntu"
                 android:text=""
                 android:textColor="@color/text"
@@ -235,8 +237,9 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/home" />
+                android:layout_marginStart="10dp"
+                android:src="@drawable/home"
+                android:contentDescription="@string/address" />
 
             <TextView
                 android:id="@+id/address"

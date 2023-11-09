@@ -11,5 +11,5 @@
     <string name="edit">Редактировать</string>
     <string name="call">Звонок</string>
     <string name="message">Сообщение</string>
-    <string name="email">Почта</string>
+    <string name="sms">Написать SMS</string>
 </resources>
