@@ -62,7 +62,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:onClick="call">
 
                 <ImageButton
                     android:layout_width="40dp"
@@ -70,7 +71,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginHorizontal="20dp"
                     android:background="#00000000"
-                    android:src="@drawable/call" />
+                    android:src="@drawable/call"
+                    android:clickable="false"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,13 +80,15 @@
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/ubuntu"
                     android:text="@string/call"
-                    android:textColor="@color/text" />
+                    android:textColor="@color/text"
+                    android:clickable="false"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:onClick="message">
 
             <ImageButton
                 android:layout_width="40dp"
@@ -93,6 +97,7 @@
                 android:layout_gravity="center_horizontal"
                 android:background="#00000000"
                 android:src="@drawable/message"
+                android:clickable="false"
                 />
 
                 <TextView
@@ -101,14 +106,16 @@
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/ubuntu"
                     android:text="@string/message"
-                    android:textColor="@color/text" />
+                    android:textColor="@color/text"
+                    android:clickable="false"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:onClick="email">
 
                 <ImageButton
                     android:layout_width="40dp"
@@ -117,6 +124,7 @@
                     android:layout_gravity="center_horizontal"
                     android:background="#00000000"
                     android:src="@drawable/email"
+                    android:clickable="false"
                     />
 
                 <TextView
@@ -125,7 +133,8 @@
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/ubuntu"
                     android:text="@string/email"
-                    android:textColor="@color/text" />
+                    android:textColor="@color/text"
+                    android:clickable="false"/>
 
             </LinearLayout>
 
