@@ -29,27 +29,38 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        setTitle("Редактирование контакта");
+        // Получаем выбранный элемент из intent'а. Если его нет, значит создается новый контакт, значения подставлять не нужно.
         selectedItem = getIntent().getIntExtra("selectedItem", -1);
         if(selectedItem != -1) {
+            // Если же выбран какой-то ID, получаем информацию о контакте из БД и подставляем куда надо
             HashMap<String, String> info = MainActivity.db.getContactInfo(selectedItem);
             ((TextView) findViewById(R.id.name)).setText(info.get("name"));
             ((TextView) findViewById(R.id.surname)).setText(info.get("surname"));
             ((TextView) findViewById(R.id.p_number)).setText(info.get("phone"));
             ((TextView) findViewById(R.id.mail)).setText(info.get("email"));
             ((TextView) findViewById(R.id.address)).setText(info.get("address"));
+            // Если файл с аватаркой существует, то он устанавливается в ImageView. Иначе в ImageView устанавливается стандартная аватарка.
+            // Если изображение было изменено, но название файла осталось таким же - фотография не обновится.
+            // Поэтому используем такой костыль: Заранее устанавливаем стандартную аватарку в любом случае.
             ((ImageView) findViewById(R.id.avatar)).setImageResource(R.drawable.photo);
             File avatar = new File(getFilesDir(), info.get("id")+".png");
             if (avatar.exists()) {
                 ((ImageView)findViewById(R.id.avatar)).setImageURI(Uri.fromFile(avatar));
             }
         }
+        // Используем Result Activity API для запуска встроенного Activity PickVisualMedia
+        // https://developer.android.com/training/data-storage/shared/photopicker
         pickMedia = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
             ImageView avatar = findViewById(R.id.avatar);
+            // Если пользователь выбрал аватарку (uri не null), то копируем файл в папку с кешем.
             if (uri != null) {
+                // /data/data/com.malw.contacts/cache/temp_photo.png
+                // либо на новых андроидах /data/user/0/com.malw.contacts/cache/temp_photo.png
                 File img = new File(getCacheDir(), "temp_photo.png");
                 copy(uri, img);
                 avatar.setImageURI(Uri.fromFile(img));
+                // Когда установалено фото - у ImageView тег 1
+                // Когда установлена стандартная аватарка - у ImageView тег 0
                 avatar.setTag(1);
             }
             else {
@@ -59,7 +70,9 @@ public class EditActivity extends AppCompatActivity {
         });
     }
 
+    // Вызывается при нажатии на кнопку сохранения
     public void edit(View view) {
+        // Если в поле ввода имени ничего нет, выдавать предупреждение. Иначе сохранять.
         if(((TextView)findViewById(R.id.name)).getText().toString().equals("")) {
             new AlertDialog.Builder(this).setTitle("Изменение контакта")
                     .setMessage("Имя не может быть пустым!")
@@ -68,7 +81,10 @@ public class EditActivity extends AppCompatActivity {
         }
         else {
             if (selectedItem == -1) {
-                if (((ImageView) findViewById(R.id.avatar)).getTag().toString().equals("1"))
+                // Создание нового контакта
+                if (findViewById(R.id.avatar).getTag().toString().equals("1"))
+                    // Если пользователь установил фото (тег у ImageVIew = 1), то копировать файл из кеша в данные.
+                    // Имя файла = *последний сгенерированный айди AUTOINCREMENT + 1*.png
                     copy(new File(getCacheDir(), "temp_photo.png"), new File(getFilesDir(), (MainActivity.db.getLastId() + 1) + ".png"));
                 MainActivity.db.addContact(
                         ((TextView) findViewById(R.id.name)).getText().toString(),
@@ -78,9 +94,13 @@ public class EditActivity extends AppCompatActivity {
                         ((TextView) findViewById(R.id.address)).getText().toString()
                 );
             } else {
-                if (((ImageView) findViewById(R.id.avatar)).getTag().toString().equals("1")) {
+                // Изменение существующего контакта
+                if (findViewById(R.id.avatar).getTag().toString().equals("1")) {
+                    // Если пользователь установил фото (тег у ImageVIew = 1), то копировать файл из кеша в данные.
+                    // Имя файла = *выбраннный айди*.png
                     copy(new File(getCacheDir(), "temp_photo.png"), new File(getFilesDir(), selectedItem + ".png"));
                 } else {
+                    // Раньше была фотография, а теперь нет? Значит файл надо удалять.
                     new File(getFilesDir(), selectedItem + ".png").delete();
                 }
                 MainActivity.db.updateContact(
@@ -97,12 +117,14 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
+    // Запуск Photo Picker'а при нажатии на значок добавления фото
     public void selectPhoto(View view) {
         pickMedia.launch(new PickVisualMediaRequest.Builder()
             .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
             .build());
     }
 
+    // Две перегрузки метода для копирования файлов
     private void copy(File from, File to) {
         try (OutputStream os = new FileOutputStream(to); InputStream is = new FileInputStream(from)) {
             byte[] buffer = new byte[8192];
