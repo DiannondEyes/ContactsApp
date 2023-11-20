@@ -43,7 +43,8 @@ public class ContactsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         // Реализуем разметку. В data хранится HashMap, где ключ - ID контакта, значение - имя и фамилия.
         // Устанавливаем tag с ID контакта в корневой элемент LinearLayout
-        if (convertView == null) convertView = LayoutInflater.from(context).inflate(R.layout.contact_item, parent, false);
+        if (convertView == null)
+            convertView = LayoutInflater.from(context).inflate(R.layout.contact_item, parent, false);
         Integer key = (Integer) data.keySet().toArray()[position];
         convertView.setTag(key);
         // Устанавливаем значение data (имя и фамилия) в TextView
@@ -52,7 +53,7 @@ public class ContactsAdapter extends BaseAdapter {
         // Если файл с аватаркой существует, то он устанавливается в ImageView. Иначе в ImageView устанавливается стандартная аватарка.
 
         // Ищем файл *id*.png в папке с данными приложения
-        File avatar = new File(context.getFilesDir(), key+".png");
+        File avatar = new File(context.getFilesDir(), key + ".png");
         ImageView avatarImage = convertView.findViewById(R.id.avatar);
         if (avatar.exists()) {
             // Устанавливаем аватар из файла
@@ -62,10 +63,13 @@ public class ContactsAdapter extends BaseAdapter {
             avatarImage.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(), R.drawable.user, null));
         }
         // Создаем listener для обработки нажатия на LinearLayout. Вызываем InfoActivity (и передаем туда ID выбранного контакта) при выборе контакта.
+
+        convertView.setOnClickListener(v -> {
         if (context.getResources().getConfiguration().smallestScreenWidthDp >= 600) {
-            // replace fragment
-        }
-        convertView.setOnClickListener(v -> context.startActivity(new Intent(context, InfoActivity.class).putExtra("key", (Integer) v.getTag())));
+            ((MainActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.infoFragment, InfoFragment.newInstance((Integer) v.getTag())).commit();
+        } else {
+            context.startActivity(new Intent(context, InfoActivity.class).putExtra("key", (Integer) v.getTag()));
+        }});
         return convertView;
     }
 }
