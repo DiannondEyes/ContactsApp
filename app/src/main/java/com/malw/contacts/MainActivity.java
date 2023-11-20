@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Вызывается при нажатии на кнопку создания нового контакта
     public void edit(View view) {
-        EditDialogFragment dialog = new EditDialogFragment();
-        dialog.show(getSupportFragmentManager(), "custom");
+        EditDialogFragment.newInstance(-1).show(getSupportFragmentManager(), "custom");
     }
 }
