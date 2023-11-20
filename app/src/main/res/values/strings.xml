@@ -12,4 +12,5 @@
     <string name="call">Звонок</string>
     <string name="message">Сообщение</string>
     <string name="sms">Написать SMS</string>
+    <string name="select_contact">Выберите контакт слева!</string>
 </resources>

@@ -62,6 +62,9 @@ public class ContactsAdapter extends BaseAdapter {
             avatarImage.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(), R.drawable.user, null));
         }
         // Создаем listener для обработки нажатия на LinearLayout. Вызываем InfoActivity (и передаем туда ID выбранного контакта) при выборе контакта.
+        if (context.getResources().getConfiguration().smallestScreenWidthDp >= 600) {
+            // replace fragment
+        }
         convertView.setOnClickListener(v -> context.startActivity(new Intent(context, InfoActivity.class).putExtra("key", (Integer) v.getTag())));
         return convertView;
     }
