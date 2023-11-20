@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Вызывается при нажатии на кнопку создания нового контакта
     public void edit(View view) {
-        // Запускаем activity для редактирования, ничего туда не передаем, чтобы поля были пустые
-        startActivity(new Intent(MainActivity.this, EditActivity.class));
+        EditDialogFragment dialog = new EditDialogFragment();
+        dialog.show(getSupportFragmentManager(), "custom");
     }
 }
