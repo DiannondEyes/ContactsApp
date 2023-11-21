@@ -15,8 +15,7 @@ import java.io.File;
 import java.util.HashMap;
 
 public class InfoActivity extends AppCompatActivity {
-
-
+    HashMap<String, String> info;
     int selectedItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,11 @@ public class InfoActivity extends AppCompatActivity {
 
     // При нажатии на кнопку редактирования, вызывается этот метод, в intent передается ID выбранного фото.
     public void edit(View view) {
-        EditDialogFragment dialog = new EditDialogFragment();dialog.show(getSupportFragmentManager(), "custom");
+        if (getResources().getConfiguration().smallestScreenWidthDp >= 600) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.infoFragment, EditPopupFragment.newInstance(-1)).commit();
+        } else {
+            startActivity(new Intent(InfoActivity.this, EditActivity.class).putExtra("selectedItem", selectedItem));
+        }
     }
 
     @Override
@@ -40,7 +43,20 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     void refresh() {
-
+        // Получаем информацию о контакте из БД и подставляем куда надо
+        info = MainActivity.db.getContactInfo(selectedItem);
+        ((TextView)findViewById(R.id.name_surname)).setText(String.format("%s %s", info.get("name"), info.get("surname")));
+        ((TextView)findViewById(R.id.phone_number)).setText(info.get("phone"));
+        ((TextView)findViewById(R.id.email)).setText(info.get("email"));
+        ((TextView)findViewById(R.id.address)).setText(info.get("address"));
+        // Если файл с аватаркой существует, то он устанавливается в ImageView. Иначе в ImageView устанавливается стандартная аватарка.
+        // Если изображение было изменено, но название файла осталось таким же - фотография не обновится.
+        // Поэтому используем такой костыль: Заранее устанавливаем стандартную аватарку в любом случае.
+        ((ImageView) findViewById(R.id.avatar)).setImageResource(R.drawable.user);
+        File avatar = new File(getFilesDir(), info.get("id")+".png");
+        if (avatar.exists()) {
+            ((ImageView)findViewById(R.id.avatar)).setImageURI(Uri.fromFile(avatar));
+        }
     }
 
     // Вызывается при нажатии на кнопку звонка

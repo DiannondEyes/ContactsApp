@@ -2,12 +2,13 @@ package com.malw.contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
 
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     static DataBase db;
@@ -21,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
     // Вызывается при нажатии на кнопку создания нового контакта
     public void edit(View view) {
-        EditDialogFragment.newInstance(-1).show(getSupportFragmentManager(), "custom");
+        if (getResources().getConfiguration().smallestScreenWidthDp >= 600) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.infoFragment, EditPopupFragment.newInstance(-1)).commit();
+        } else {
+            startActivity(new Intent(MainActivity.this, EditActivity.class).putExtra("key",-1));
+        }
     }
 }

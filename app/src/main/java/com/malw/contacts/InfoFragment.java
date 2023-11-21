@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -34,7 +35,6 @@ public class InfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         selectedItem = getArguments().getInt("key");
-        Log.d("adsd", String.valueOf(selectedItem));
     }
 
     @Override
@@ -69,6 +69,10 @@ public class InfoFragment extends Fragment {
             else {
                 Toast.makeText(getContext(), "Email пустой!", Toast.LENGTH_SHORT).show();
             }
+        });
+        root.findViewById(R.id.editButton).setOnClickListener(l -> {
+            FragmentManager fm = ((MainActivity) getContext()).getSupportFragmentManager();
+            fm.beginTransaction().replace(R.id.infoFragment, EditPopupFragment.newInstance(selectedItem)).commit();
         });
         return root;
     }
