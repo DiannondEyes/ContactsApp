@@ -1,16 +1,13 @@
 package com.malw.contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
+    // Активити со списком контактов, только на телефонах
     static DataBase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

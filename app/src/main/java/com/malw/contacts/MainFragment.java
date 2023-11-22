@@ -10,6 +10,7 @@ import android.widget.ListView;
 import java.util.HashMap;
 
 public class MainFragment extends Fragment {
+    // Фрагмент со списком контактов, подставляется слева, только на планшетах
     ListView list;
     @Override
     public void onCreate(Bundle savedInstanceState) {

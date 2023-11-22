@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +19,14 @@ import java.io.File;
 import java.util.HashMap;
 
 public class InfoFragment extends Fragment {
+    // Фрагмент информации о контакте, только на телефонах
     View root;
     int selectedItem;
 
     public static InfoFragment newInstance(int key) {
         InfoFragment fragment = new InfoFragment();
         Bundle args = new Bundle();
+        // Передаем айди выбранного контакта в аргументы
         args.putInt("key", key);
         fragment.setArguments(args);
         return fragment;

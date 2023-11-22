@@ -62,8 +62,7 @@ public class ContactsAdapter extends BaseAdapter {
             // Устанавливаем аватар из drawable
             avatarImage.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(), R.drawable.user, null));
         }
-        // Создаем listener для обработки нажатия на LinearLayout. Вызываем InfoActivity (и передаем туда ID выбранного контакта) при выборе контакта.
-
+        // Создаем listener для обработки нажатия на LinearLayout. Если телефон - Вызываем InfoActivity (и передаем туда ID выбранного контакта) при выборе контакта. Если планшет - изменяем фрагмент справа на InfoFragment.
         convertView.setOnClickListener(v -> {
         if (context.getResources().getConfiguration().smallestScreenWidthDp >= 600) {
             ((MainActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.infoFragment, InfoFragment.newInstance((Integer) v.getTag())).commit();

@@ -22,6 +22,7 @@ import java.io.OutputStream;
 import java.util.HashMap;
 
 public class EditActivity extends AppCompatActivity {
+    // Активити редактирования контакта, только на телефонах
 
     int selectedItem;
     ActivityResultLauncher<PickVisualMediaRequest> pickMedia;

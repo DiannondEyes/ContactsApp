@@ -26,11 +26,13 @@ import java.io.OutputStream;
 import java.util.HashMap;
 
 public class EditPopupFragment extends Fragment {
+    // Фрагмент редактирования контакта, помещается справа, только на планшетах
     int selectedItem;
     ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
     public static EditPopupFragment newInstance(int selectedItem) {
         EditPopupFragment fragment = new EditPopupFragment();
         Bundle args = new Bundle();
+        // Передаем айди выбранного контакта в аргументы
         args.putInt("selectedItem", selectedItem);
         fragment.setArguments(args);
         return fragment;
@@ -132,6 +134,7 @@ public class EditPopupFragment extends Fragment {
                 }
             }
         });
+        // Кнопка выбора фото
         root.findViewById(R.id.avatar).setOnClickListener(l -> {
             pickMedia.launch(new PickVisualMediaRequest.Builder()
                     .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)

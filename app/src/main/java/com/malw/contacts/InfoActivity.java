@@ -15,6 +15,7 @@ import java.io.File;
 import java.util.HashMap;
 
 public class InfoActivity extends AppCompatActivity {
+    // Активити просмотра контакта, только на телефонах
     HashMap<String, String> info;
     int selectedItem;
     @Override
