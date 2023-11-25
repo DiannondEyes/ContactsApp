@@ -64,10 +64,10 @@ public class ContactsAdapter extends BaseAdapter {
         }
         // Создаем listener для обработки нажатия на LinearLayout. Если телефон - Вызываем InfoActivity (и передаем туда ID выбранного контакта) при выборе контакта. Если планшет - изменяем фрагмент справа на InfoFragment.
         convertView.setOnClickListener(v -> {
-        if (context.getResources().getConfiguration().smallestScreenWidthDp >= 600) {
-            ((MainActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.infoFragment, InfoFragment.newInstance((Integer) v.getTag())).commit();
-        } else {
-            context.startActivity(new Intent(context, InfoActivity.class).putExtra("key", (Integer) v.getTag()));
+            if (context.getResources().getConfiguration().smallestScreenWidthDp >= 600) {
+                ((MainActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.infoFragment, InfoFragment.newInstance((Integer) v.getTag())).commit();
+            } else {
+                context.startActivity(new Intent(context, InfoActivity.class).putExtra("key", (Integer) v.getTag()));
         }});
         return convertView;
     }

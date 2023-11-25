@@ -20,8 +20,8 @@ public class MainFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // Вызываем refresh для обновления информации о контактах и добавления их в список
         refresh();
+        // Вызываем refresh для обновления информации о контактах и добавления их в список
     }
 
     @Override
@@ -29,7 +29,8 @@ public class MainFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         list = root.findViewById(R.id.listOfTitles);
         // Вызываем refresh для обновления информации о контактах и добавления их в список
-        refresh();
+        MainActivity.db.executeUpdateTask();
+        MainActivity.db.setUpdateTaskCallback(() -> getActivity().runOnUiThread(() -> refresh()));
         return root;
     }
 
