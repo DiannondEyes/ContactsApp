@@ -29,8 +29,11 @@ public class MainFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         list = root.findViewById(R.id.listOfTitles);
         // Вызываем refresh для обновления информации о контактах и добавления их в список
-        MainActivity.db.executeUpdateTask();
-        MainActivity.db.setUpdateTaskCallback(() -> getActivity().runOnUiThread(() -> refresh()));
+        MainActivity.db.updateData();
+        MainActivity.db.setUpdateTaskCallback(() -> getActivity().runOnUiThread(() -> {
+            refresh();
+            root.findViewById(R.id.progress).setVisibility(View.GONE);
+        }));
         return root;
     }
 

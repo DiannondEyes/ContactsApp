@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
+@SuppressWarnings("deprecation")
 public class DataBase {
 
     final SQLiteDatabase db;
@@ -33,11 +33,59 @@ public class DataBase {
     // Создание нового контакта
     public void addContact(String name, String surname, String phone, String email, String address) {
         db.execSQL("INSERT INTO contacts (name, surname, phone, email, address) VALUES (?, ?, ?, ?, ?)", new String[]{name, surname, phone, email, address});
+        new Thread(() -> {
+            HttpURLConnection connection = null;
+            try {
+                connection = (HttpURLConnection) new URL("http://37.77.105.18/api/Contacts").openConnection();
+                connection.setRequestMethod("POST");
+                connection.getResponseCode();
+                if (connection.getResponseCode() == 200) {
+                    JsonObject contacts = new JsonParser().parse(new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next()).getAsJsonObject();
+                    for (JsonElement contact : contacts.get("contacts").getAsJsonArray()) {
+                        JsonObject ctct = contact.getAsJsonObject();
+                        Log.d("contact", String.valueOf(ctct.get("id")));
+                        db.execSQL("INSERT INTO contacts (id, name, surname, phone, email, address) VALUES (?, ?, ?, ?, ?, ?)", new String[]{ctct.get("id").getAsString(), ctct.get("name").getAsString(), ctct.get("surname").getAsString(), ctct.get("phoneNumber").getAsString(), ctct.get("email").getAsString(), ctct.get("address").getAsString()});
+                    }
+                }
+                else {
+                    return;
+                }
+            } catch (IOException | SQLiteConstraintException e) {
+                Log.e("IOException", e.getMessage());
+            } finally {
+                if (connection != null) connection.disconnect();
+                if (updateTaskCallback != null) {
+                    updateTaskCallback.run();
+                }
+            }
+        }).start();
     }
 
     // Обновление существующего контакта
     public void updateContact(int id, String name, String surname, String phone, String email, String address) {
         db.execSQL("UPDATE contacts SET name = ?, surname = ? ,phone = ?, email = ?, address = ? WHERE id = ?", new String[]{name, surname, phone, email, address, String.valueOf(id)});
+        new Thread(() -> {
+                    HttpURLConnection connection = null;
+                    try {
+                        connection = (HttpURLConnection) new URL("http://37.77.105.18/api/Contacts").openConnection();
+                        connection.setRequestMethod("PUT");
+                        connection.getResponseCode();
+                        if (connection.getResponseCode() == 200) {
+                            JsonObject contacts = new JsonParser().parse(new Scanner(connection.getInputStream(), "UTF-8").useDelimiter("\\A").next()).getAsJsonObject();
+//                            contacts.put
+                            for (JsonElement contact : contacts.get("contacts").getAsJsonArray()) {
+                                JsonObject ctct = contact.getAsJsonObject();
+                            }
+                        }
+                    } catch (IOException | SQLiteConstraintException e) {
+                        Log.e("IOException", e.getMessage());
+                    } finally {
+                        if (connection != null) connection.disconnect();
+                        if (updateTaskCallback != null) {
+                            updateTaskCallback.run();
+                        }
+                    }
+                }).start();
     }
 
     // Получение информации об определенном контакте. Возвращается HashMap, где ключи - поля базы данных, значения - значения соответственно.
@@ -82,11 +130,13 @@ public class DataBase {
         }
     }
 
+    public void setUpdateTaskCallback(Runnable callback) {
+        this.updateTaskCallback = callback;
+    }
+
     // Получение данных с сервера
-    @SuppressWarnings("deprecation")
-    class UpdateTask implements Runnable {
-        @Override
-        public void run() {
+    public void updateData() {
+        new Thread(() -> {
             HttpURLConnection connection = null;
             try {
                 connection = (HttpURLConnection) new URL("http://37.77.105.18/api/Contacts").openConnection();
@@ -101,6 +151,9 @@ public class DataBase {
                         db.execSQL("INSERT INTO contacts (id, name, surname, phone, email, address) VALUES (?, ?, ?, ?, ?, ?)", new String[]{ctct.get("id").getAsString(), ctct.get("name").getAsString(), ctct.get("surname").getAsString(), ctct.get("phoneNumber").getAsString(), ctct.get("email").getAsString(), ctct.get("address").getAsString()});
                     }
                 }
+                else {
+                    return;
+                }
             } catch (IOException | SQLiteConstraintException e) {
                 Log.e("IOException", e.getMessage());
             } finally {
@@ -109,15 +162,6 @@ public class DataBase {
                     updateTaskCallback.run();
                 }
             }
-        }
-    }
-    public void setUpdateTaskCallback(Runnable callback) {
-        this.updateTaskCallback = callback;
-    }
-
-    public void executeUpdateTask() {
-        UpdateTask updateTask = new UpdateTask();
-        Thread thread = new Thread(updateTask);
-        thread.start();
+        }).start();
     }
 }
