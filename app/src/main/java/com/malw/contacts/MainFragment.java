@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class MainFragment extends Fragment {
     // Фрагмент со списком контактов, подставляется слева, только на планшетах
     ListView list;
+    View root;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +27,25 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_main, container, false);
+        root = inflater.inflate(R.layout.fragment_main, container, false);
         list = root.findViewById(R.id.listOfTitles);
         // Вызываем refresh для обновления информации о контактах и добавления их в список
-        MainActivity.db.updateData();
+        list.setVisibility(View.GONE);
+        MainActivity.db.updateData(getContext());
         MainActivity.db.setUpdateTaskCallback(() -> getActivity().runOnUiThread(() -> {
             refresh();
             root.findViewById(R.id.progress).setVisibility(View.GONE);
+            list.setVisibility(View.VISIBLE);
         }));
+        root.findViewById(R.id.refreshButton).setOnClickListener(l -> {
+            list.setVisibility(View.GONE);
+            MainActivity.db.updateData(getContext());
+            MainActivity.db.setUpdateTaskCallback(() -> getActivity().runOnUiThread(() -> {
+                refresh();
+                root.findViewById(R.id.progress).setVisibility(View.GONE);
+                list.setVisibility(View.VISIBLE);
+            }));
+        });
         return root;
     }
 

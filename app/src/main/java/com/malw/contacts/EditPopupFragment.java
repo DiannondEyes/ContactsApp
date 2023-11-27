@@ -107,7 +107,8 @@ public class EditPopupFragment extends Fragment {
                             ((TextView) root.findViewById(R.id.surname)).getText().toString(),
                             ((TextView) root.findViewById(R.id.p_number)).getText().toString(),
                             ((TextView) root.findViewById(R.id.mail)).getText().toString(),
-                            ((TextView) root.findViewById(R.id.address)).getText().toString()
+                            ((TextView) root.findViewById(R.id.address)).getText().toString(),
+                            getContext()
                     );
                     ((MainFragment)(fm.findFragmentById(R.id.mainFragment))).refresh();
                     fm.beginTransaction().replace(R.id.infoFragment, new ChooseContactFragment()).commit();
@@ -127,7 +128,8 @@ public class EditPopupFragment extends Fragment {
                             ((TextView) root.findViewById(R.id.surname)).getText().toString(),
                             ((TextView) root.findViewById(R.id.p_number)).getText().toString(),
                             ((TextView) root.findViewById(R.id.mail)).getText().toString(),
-                            ((TextView) root.findViewById(R.id.address)).getText().toString()
+                            ((TextView) root.findViewById(R.id.address)).getText().toString(),
+                            getContext()
                     );
                     ((MainFragment)(fm.findFragmentById(R.id.mainFragment))).refresh();
                     fm.beginTransaction().replace(R.id.infoFragment, InfoFragment.newInstance(selectedItem)).commit();
